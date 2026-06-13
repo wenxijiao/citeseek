@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "citeseek"
+version = "0.1.0"
+description = "Citation evidence workbench: find supporting papers and passage-level evidence for research claims"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "sse-starlette>=2.1",
+    "httpx>=0.27",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "python-dotenv>=1.0",
+    "mcp>=1.2",
+    "anthropic>=0.40",
+    "openai>=1.55",
+    "sentence-transformers>=3.3",
+    "torch>=2.6",
+    "sqlite-vec>=0.1.6",
+    "pymupdf>=1.25",
+    "selectolax>=0.3.21",
+    "rapidfuzz>=3.10",
+    "rank-bm25>=0.2.2",
+    "feedparser>=6.0",
+    "rich>=13.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+]
+
+[project.scripts]
+citeseek = "citeseek.cli:main"
+citeseek-api = "citeseek.api.app:main"
+citeseek-mcp = "citeseek.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["citeseek"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

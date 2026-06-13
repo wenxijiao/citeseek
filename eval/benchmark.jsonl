@@ -1,0 +1,28 @@
+{"id": "attention", "claim": "attention mechanisms allow neural machine translation models to align source and target words", "gold": ["1409.0473", "1706.03762", "1508.04025"]}
+{"id": "transformer", "claim": "sequence transduction can be done entirely with self-attention, without recurrence or convolution", "gold": ["1706.03762"]}
+{"id": "gan", "claim": "a generator and a discriminator trained in a minimax game can learn to produce realistic samples", "gold": ["1406.2661"]}
+{"id": "resnet", "claim": "identity shortcut connections let very deep networks be trained by learning residual functions", "gold": ["1512.03385"]}
+{"id": "dropout", "claim": "randomly dropping units during training prevents complex co-adaptation and reduces overfitting", "gold": ["1207.0580", "10.5555/2627435.2670313"]}
+{"id": "batchnorm", "claim": "normalizing layer inputs over each mini-batch reduces internal covariate shift and speeds up training", "gold": ["1502.03167"]}
+{"id": "adam", "claim": "adaptive estimates of first and second moments of gradients give an effective stochastic optimizer", "gold": ["1412.6980"]}
+{"id": "word2vec", "claim": "word vectors trained by predicting context words capture syntactic and semantic regularities", "gold": ["1301.3781", "1310.4546"]}
+{"id": "bert", "claim": "bidirectional pre-training with masked language modeling produces strong transferable language representations", "gold": ["1810.04805"]}
+{"id": "cot", "claim": "prompting language models to produce intermediate reasoning steps improves performance on math word problems", "gold": ["2201.11903"]}
+{"id": "ddpm", "claim": "generative models can synthesize images by learning to reverse a gradual noising process", "gold": ["2006.11239", "1503.03585"]}
+{"id": "vae", "claim": "a variational lower bound can be optimized with the reparameterization trick to train deep latent variable models", "gold": ["1312.6114"]}
+{"id": "seq2seq", "claim": "an encoder-decoder pair of recurrent networks can map input sequences to output sequences of different lengths", "gold": ["1409.3215", "1406.1078"]}
+{"id": "lstm", "claim": "gating mechanisms with a constant error carousel solve the vanishing gradient problem in recurrent networks", "gold": ["10.1162/neco.1997.9.8.1735"]}
+{"id": "gpt3", "claim": "very large language models can perform new tasks from a few in-context examples without parameter updates", "gold": ["2005.14165"]}
+{"id": "rlhf", "claim": "fine-tuning language models with reinforcement learning from human feedback aligns them with user instructions", "gold": ["2203.02155", "1909.08593", "2009.01325"]}
+{"id": "clip", "claim": "contrastive pre-training on image-text pairs enables zero-shot transfer to image classification tasks", "gold": ["2103.00020"]}
+{"id": "vit", "claim": "a pure transformer applied to sequences of image patches can match convolutional networks on image classification", "gold": ["2010.11929"]}
+{"id": "distillation", "claim": "a small student network can be trained to match the softened output distribution of a large teacher model", "gold": ["1503.02531"]}
+{"id": "lora", "claim": "freezing pretrained weights and learning low-rank update matrices makes fine-tuning large models parameter-efficient", "gold": ["2106.09685"]}
+{"id": "rag", "claim": "combining a neural retriever with a generative model improves knowledge-intensive question answering", "gold": ["2005.11401"]}
+{"id": "ppo", "claim": "clipping the policy probability ratio yields a stable and simple policy gradient algorithm", "gold": ["1707.06347"]}
+{"id": "layernorm", "claim": "normalizing across the features of each sample stabilizes training of recurrent networks", "gold": ["1607.06450"]}
+{"id": "unet", "claim": "a contracting path with skip connections to an expanding path enables precise biomedical image segmentation", "gold": ["1505.04597"]}
+{"id": "dqn", "claim": "deep networks with experience replay can learn control policies directly from raw pixels", "gold": ["1312.5602"]}
+{"id": "scaling", "claim": "language model loss follows a power law in model size, dataset size, and training compute", "gold": ["2001.08361"]}
+{"id": "elmo", "claim": "contextualized word representations from deep bidirectional language models improve downstream NLP tasks", "gold": ["1802.05365"]}
+{"id": "alphago", "claim": "combining Monte Carlo tree search with deep value and policy networks can master the game of Go", "gold": ["10.1038/nature16961"]}

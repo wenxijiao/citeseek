@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource/source-serif-4/400.css';
+@import '@fontsource/source-serif-4/400-italic.css';
+@import '@fontsource/source-serif-4/600.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+
+  --color-background: oklch(0.985 0.002 90);
+  --color-foreground: oklch(0.24 0.012 260);
+  --color-surface: oklch(1 0 0);
+  --color-surface-muted: oklch(0.965 0.003 90);
+  --color-border: oklch(0.91 0.005 90);
+  --color-muted-foreground: oklch(0.52 0.012 260);
+  --color-accent: oklch(0.55 0.16 255);
+  --color-accent-soft: oklch(0.94 0.03 255);
+  --color-accent-foreground: oklch(1 0 0);
+  --color-positive: oklch(0.62 0.14 155);
+  --color-warning: oklch(0.72 0.14 75);
+  --color-danger: oklch(0.6 0.18 25);
+
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+
+  --animate-fade-up: fade-up 0.35s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+  --animate-fade-in: fade-in 0.25s ease both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.dark {
+  --color-background: oklch(0.205 0.012 260);
+  --color-foreground: oklch(0.93 0.005 90);
+  --color-surface: oklch(0.245 0.012 260);
+  --color-surface-muted: oklch(0.275 0.012 260);
+  --color-border: oklch(0.33 0.012 260);
+  --color-muted-foreground: oklch(0.68 0.01 260);
+  --color-accent: oklch(0.72 0.13 255);
+  --color-accent-soft: oklch(0.32 0.06 255);
+  --color-accent-foreground: oklch(0.18 0.02 260);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+}
+
+/* Branded accents */
+.brand-gradient {
+  background: linear-gradient(135deg, oklch(0.55 0.16 255), oklch(0.6 0.18 290));
+}
+.hero-wash {
+  background:
+    radial-gradient(48rem 22rem at 50% -4rem, color-mix(in oklch, var(--color-accent) 9%, transparent), transparent 70%),
+    radial-gradient(36rem 18rem at 85% 110%, color-mix(in oklch, oklch(0.6 0.18 290) 7%, transparent), transparent 70%);
+}
+.card-elevated {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 16px -6px rgb(0 0 0 / 0.06);
+}
+.card-elevated:hover {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.05),
+    0 10px 28px -8px rgb(0 0 0 / 0.12);
+}
+.dark .card-elevated {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px -8px rgb(0 0 0 / 0.5);
+}
+
+/* Reader typography — paper body text */
+.reader-prose {
+  @apply font-serif text-[1.05rem] leading-[1.75];
+  max-width: 70ch;
+}
+.reader-prose h1,
+.reader-prose h2,
+.reader-prose h3 {
+  @apply font-sans font-semibold tracking-tight;
+}
+.reader-prose p {
+  @apply my-4;
+}
+.reader-prose ::selection {
+  background: color-mix(in oklch, var(--color-accent) 25%, transparent);
+}
+
+/* PDF.js text layer — invisible selectable text positioned over the canvas */
+.pdf-text-layer {
+  overflow: hidden;
+  line-height: 1;
+  forced-color-adjust: none;
+  user-select: text;
+  --user-unit: 1;
+  --total-scale-factor: calc(var(--scale-factor) * var(--user-unit));
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+.pdf-text-layer span,
+.pdf-text-layer br {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+}
+.pdf-text-layer > :not(.markedContent),
+.pdf-text-layer .markedContent span:not(.markedContent) {
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  transform: rotate(var(--rotate, 0deg)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+/* Native selection painting is hidden entirely — fragmented spans (math,
+   sub/superscripts) paint overlapping, misaligned boxes. A custom overlay
+   draws clean per-line bands instead (see SelectionOverlay in PdfViewer). */
+.pdf-text-layer ::selection {
+  background: transparent;
+  color: transparent;
+}
+/* Solid color — the overlay container applies the opacity, so overlapping
+   rects composite to a single uniform tint instead of darkening. */
+.pdf-selection-band {
+  position: absolute;
+  pointer-events: none;
+  background: var(--color-accent);
+}
+
+/* Already-processed snippets — glyph rects in a container-opacity overlay,
+   same compositing scheme as the live selection. Clicks resolve through the
+   data attributes on the text-layer spans, which get a pointer cursor. */
+.pdf-mark-ev {
+  background: var(--color-accent);
+}
+.pdf-mark-tr {
+  background: var(--color-positive);
+}
+.pdf-text-layer span[data-node-id],
+.pdf-text-layer span[data-mark-text] {
+  cursor: pointer;
+}

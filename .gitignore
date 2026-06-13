@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+
+# Runtime data (DB, fetched fulltext, embedding models)
+var/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+frontend/dist/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Eval outputs (results are regenerated; cache is large)
+eval/cache/
+frontend/screenshots/
+Von-main/
+eval/*.log
+eval/cache/
+
+# Local reports, evidence exports, and submission bundles
+docs/
+integration/evidence/
+*.docx
+*.pdf
+*.zip
+*.db
+*.db-*
+*.sqlite
